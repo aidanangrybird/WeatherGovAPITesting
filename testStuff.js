@@ -1,44 +1,15 @@
-const fs = require('node:fs');
-let axios = require("axios");
-var gju = require("geojson-utils");
-var weatherGovAPI = require("./apiStuff");
+var gju = require("./geojson-utils");
+var weatherGovAPI = require("./apiStuff.js");
 
 //Need to add error handling so that in case there are no alerts available for an area, it tells you that there are none
 
-//This was a lot of testing an pain
-//console.log(getCountyFromCoords(39.7392,-104.9849).getID());
-//console.log(getCountyFromCoords(39.7392,-104.9849).getName());
-//console.log(getCountyFromCoords(39.7392,-104.9849).getState());
-//console.log(getCountyFromCoords(39.7392,-104.9849).getWFO());
+//Yay a testing function thing
+async function thing() {
+  console.log(await weatherGovAPI.getWFO(35.246, -97.472));
+  console.log(await weatherGovAPI.getAlertCountByState())
+};
 
-//console.log(checkCoordinates(39.7392,-104.9849));
-
-//console.log(getSPCOutlook(2).getProbabiltyPoints());
-//console.log(polygonBuilder(getSPCOutlook(2).getProbabiltyPoints()));
-
-//console.log(JSON.stringify(getForecastZoneFromCoords(39.7392,-104.9849).getID()));
-//console.log(JSON.stringify(getForecastZoneFromCoords(38.08,-111.87).getID()));
-/*
-console.log("getAlerts(34.22,-90.53,'FFA').getEffectiveTime()");
-console.log(getAlerts(34.22, -90.53, "FFA").getEffectiveTime());
-console.log("getAlerts(34.22,-90.53,'FFA').getInstructions()");
-console.log(getAlerts(34.22, -90.53, "FFA").getInstructions());
-console.log("getAlerts(34.22,-90.53,'FFA').getHeadline()");
-console.log(getAlerts(34.22, -90.53, "FFA").getHeadline());
-console.log("getAlerts(34.22,-90.53,'FFA').getExpiresTime()");
-console.log(getAlerts(34.22, -90.53, "FFA").getExpiresTime());
-console.log("getAlerts(34.22,-90.53,'FFA').getDescription()");
-console.log(getAlerts(34.22, -90.53, "FFA").getDescription());
-*/
-weatherGovAPI.attemptDownload(1,"torn");
-//console.log();
-
-//console.log(getAlerts(41.65, -87.46, "SVR").getTornadoDetection());
-//weatherGovAPI.requestOutlookData(1, "tor");
-//console.log("weatherGovAPI.getSPCOutlook(5).getRisk(32.514722, -93.747222)");
-//console.log(weatherGovAPI.getSPCOutlook(5).getRisk(32.514722, -93.747222));
-//console.log("weatherGovAPI.getSPCOutlook(4).getTornadoRisk(32.514722, -93.747222)");
-//console.log(weatherGovAPI.getSPCOutlook(4).getRisk(32.514722, -93.747222));
+thing()
 
 //For sure add option to switch between OWL and SPC convective forecasts
 
